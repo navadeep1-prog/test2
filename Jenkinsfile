@@ -4,20 +4,29 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the application'
+                // Build steps
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests'
+                // Test steps
             }
         }
 
         stage('Deploy') {
-            steps {
-                echo 'Deploying to production'
+            when {
+                expression { branch == 'master' }
             }
-        }
-    }
+            steps {
+                // Deployment steps
+            }
+        }
+    }
+
+    post {
+        success {
+            // Actions to perform if the pipeline is successful
+        }
+    }
 }
