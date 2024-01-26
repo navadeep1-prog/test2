@@ -1,32 +1,26 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('Build') {
             steps {
-                // Build steps
+                echo 'Building the application'
+                // Add your build commands here
             }
         }
-
+        
         stage('Test') {
             steps {
-                // Test steps
+                echo 'Running tests'
+                // Add your test commands here
             }
         }
-
+        
         stage('Deploy') {
-            when {
-                expression { branch == 'master' }
-            }
             steps {
-                // Deployment steps
+                echo 'Deploying the application'
+                // Add your deployment commands here
             }
-        }
-    }
-
-    post {
-        success {
-            // Actions to perform if the pipeline is successful
         }
     }
 }
