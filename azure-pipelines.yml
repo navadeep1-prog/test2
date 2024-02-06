@@ -1,0 +1,27 @@
+# azure-pipelines.yml
+
+trigger:
+- main  # Define the branch that triggers the pipeline
+
+pool:
+  vmImage: 'windows-latest'  # Specify the build agent image
+
+jobs:
+- job: Build
+  displayName: 'Build Job'
+  steps:
+  - script: echo 'Hello, World!'
+    displayName: 'Print Hello World'
+
+- job: Test
+  displayName: 'Test Job'
+  steps:
+  - script: echo 'Running tests...'
+    displayName: 'Run Tests'
+
+- job: Deploy
+  displayName: 'Deploy Job'
+  dependsOn: Test  # Ensure that the 'Deploy' job runs after 'Test' job
+  steps:
+  - script: echo 'Deploying...'
+    displayName: 'Deploy to Production'
